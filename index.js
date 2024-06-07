@@ -11,7 +11,7 @@ const login = require('./controllers/login')
 require('dotenv').config()
 
 app.use(cors({
-    origin: 'https://miniads-waybill.vercel.app/'
+    origin: 'https://miniads-waybill.vercel.app'
 }))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
