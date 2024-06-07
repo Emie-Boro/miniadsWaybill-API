@@ -3,14 +3,16 @@ const app = express()
 const cors = require('cors')
 const bodyParser = require('body-parser')
 const connectToDatabase = require('./config/db')
-connectToDatabase()
+connectToDatabase(process.env.MONGO_URL)
 
 const waybill = require('./controllers/waybill')
 const signup = require('./controllers/signup')
 const login = require('./controllers/login')
 require('dotenv').config()
 
-app.use(cors())
+app.use(cors({
+    origin: 'https://miniads-waybill.vercel.app/'
+}))
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
