@@ -31,7 +31,7 @@ const userSchema = new Schema({
             required:true
         },
         phone: String,
-        verfied: {
+        verified: {
             type: String,
             enum: ['true', 'false', 'pending'],
             default: 'pending'
