@@ -10,9 +10,23 @@ const signup = require('./controllers/signup')
 const login = require('./controllers/login')
 require('dotenv').config()
 
-app.use(cors({
-    origin: 'https://miniads-waybill.vercel.app'
-}))
+const allowedOrigins = ['https://miniads-waybill.vercel.app'];
+
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.indexOf(origin.replace(/\/$/, "")) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  allowedHeaders: ['Content-Type', 'Authorization'],
+};
+
+// Use the CORS middleware
+app.use(cors(corsOptions));
+
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
