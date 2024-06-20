@@ -10,7 +10,7 @@ const signup = require('./controllers/signup')
 const login = require('./controllers/login')
 require('dotenv').config()
 
-const allowedOrigins = ['https://miniads-waybill.vercel.app'];
+const allowedOrigins = ['https://miniads-waybill.vercel.app', 'http://localhost:3000'];
 
 const corsOptions = {
   origin: function (origin, callback) {
